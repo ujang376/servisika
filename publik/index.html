@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servisika - Jasa Servis Alat Fitness</title>
+    <!-- Tailwind CSS for Styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .transition-all { transition: all 0.3s ease; }
+        .view-section { display: none; }
+        .view-section.active { display: block; }
+    </style>
+</head>
+<body class="bg-red-700 text-white antialiased min-h-screen relative overflow-x-hidden">
+
+    <!-- Aesthetic Background Text (Sama seperti versi React) -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden z-0">
+        <h1 class="text-[5rem] md:text-[8rem] font-bold text-white opacity-[0.05] rotate-[-12deg] whitespace-nowrap tracking-tighter select-none">
+            The White Red Indonesian servis
+        </h1>
+    </div>
+
+    <!-- Main Container -->
+    <div class="max-w-xl mx-auto px-6 py-12 min-h-screen flex flex-col items-center w-full z-10 relative">
+        
+        <!-- Back Button (Hidden on Home) -->
+        <button id="backBtn" onclick="setView('home')" class="absolute top-6 left-6 p-2 rounded-full backdrop-blur-sm bg-white/20 text-white hover:bg-white/30 transition-all hidden">
+            <i data-lucide="arrow-left" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Profile Section -->
+        <div class="w-full flex flex-col items-center text-center mb-8 relative mt-12">
+            <div class="relative mb-4">
+                <img src="https://pleasant-aquamarine-hwacnnnruw-mt0w3oe39a.edgeone.app/1765337276592.jpg" 
+                     alt="Servisika" 
+                     class="w-28 h-28 rounded-full object-cover shadow-2xl ring-4 ring-white/80 shadow-red-900/20">
+            </div>
+
+            <h1 id="pageTitle" class="text-2xl font-bold tracking-tight mb-2 text-white drop-shadow-sm">
+                Servisika
+            </h1>
+            
+            <div id="homeProfileInfo">
+                <p class="text-sm max-w-md mx-auto leading-relaxed opacity-90 font-medium whitespace-pre-line text-white/90">
+                    🇮🇩 SERVISIKA servisnya alat fitness 🔥
+📍 Jabodetabek 📍 Bandung
+💯 Transparan - Profesional - Bertanggung jawab
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-4 mt-6 justify-center">
+                    <a href="https://youtube.com/@servisika?si=rqg4sDnvXCIcsdXN" target="_blank" class="transition-transform hover:scale-110 p-2 rounded-full text-white hover:bg-white/10">
+                        <i data-lucide="youtube" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.instagram.com/servisika/" target="_blank" class="transition-transform hover:scale-110 p-2 rounded-full text-white hover:bg-white/10">
+                        <i data-lucide="instagram" class="w-6 h-6"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@rotasi_tehnik?is_from_webapp=1&sender_device=pc" target="_blank" class="transition-transform hover:scale-110 p-2 rounded-full text-white hover:bg-white/10">
+                        <img src="https://img.icons8.com/?size=100&id=QEblvzUroh89&format=png&color=FFFFFF" alt="TikTok" class="w-6 h-6 object-contain scale-125">
+                    </a>
+                    <a href="https://www.facebook.com/servisika" target="_blank" class="transition-transform hover:scale-110 p-2 rounded-full text-white hover:bg-white/10">
+                        <i data-lucide="facebook" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEWS -->
+
+        <!-- Home View -->
+        <div id="view-home" class="view-section active w-full space-y-4">
+            <!-- Link: Informasi Layanan -->
+            <div class="relative group/card">
+                <button onclick="setView('jakarta')" class="block w-full p-4 rounded-xl transition-all duration-300 flex justify-between items-center hover:scale-[1.02] active:scale-95 bg-white border-red-100 shadow-lg text-gray-900">
+                    <span class="font-medium text-center w-full flex items-center justify-center gap-2">
+                        Informasi dan Layanan Kami
+                    </span>
+                </button>
+            </div>
+
+            <!-- Link: Konten Bermanfaat -->
+            <div class="relative group/card">
+                <button onclick="setView('useful-content')" class="block w-full p-4 rounded-xl transition-all duration-300 flex justify-between items-center hover:scale-[1.02] active:scale-95 bg-white border-red-100 shadow-lg text-gray-900">
+                    <span class="font-medium text-center w-full flex items-center justify-center gap-2">
+                        Konten Bermanfaat
+                    </span>
+                </button>
+            </div>
+
+            <!-- Recommendations Section Attached Below 'useful-content' -->
+            <div class="py-4 flex flex-col items-center">
+                <p class="text-center font-medium mb-3 text-sm opacity-90 text-white">
+                    Rekomendasi merek dan produk alat fitness
+                </p>
+                <div class="flex items-center gap-4">
+                    <button onclick="setView('recommendations')" class="bg-white p-2 rounded-xl shadow-md hover:scale-110 transition-transform duration-200 w-14 h-14 flex items-center justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Tokopedia.svg" alt="Tokopedia" class="w-full h-full object-contain">
+                    </button>
+                    <button onclick="setView('recommendations')" class="bg-white p-2 rounded-xl shadow-md hover:scale-110 transition-transform duration-200 w-14 h-14 flex items-center justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Shopee.svg" alt="Shopee" class="w-full h-full object-contain">
+                    </button>
+                </div>
+            </div>
+
+            <!-- Link: WhatsApp Admin -->
+            <div class="relative group/card">
+                <a href="https://wa.me/6282260879593?text=Halo%20Admin%20Servisika,%20saya%20mau%20konsultasi%20servis." target="_blank" class="block w-full p-4 rounded-xl transition-all duration-300 flex justify-between items-center hover:scale-[1.02] active:scale-95 bg-white border-red-100 shadow-lg text-gray-900">
+                    <span class="font-medium text-center w-full flex items-center justify-center gap-2">
+                        Chat WhatsApp Admin
+                        <i data-lucide="external-link" class="w-3 h-3 text-red-500 opacity-50"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Copyright -->
+            <div class="mt-12 mb-6 text-center">
+                <span class="text-xs font-semibold opacity-60 text-white/80">
+                    &copy; <span id="year"></span> Servisika
+                </span>
+            </div>
+        </div>
+
+        <!-- Jakarta Info View -->
+        <div id="view-jakarta" class="view-section w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="w-full p-6 rounded-2xl mb-6 shadow-xl backdrop-blur-sm bg-white/10 text-white border border-white/20">
+                <h2 class="text-xl font-bold mb-4 text-center text-yellow-300 drop-shadow-md">
+                    JABODETABEK LUAS BANGET, BOSKU! 😅
+                </h2>
+                <div class="text-sm leading-relaxed whitespace-pre-wrap font-medium space-y-4">
+                    Biar sama-sama enak dan transparan, ini kebijakan harga servis kami ya:
+
+✅ DKI Jakarta & Perbatasan (Radius Dekat): Tarif Standar: Rp 250.000 (Sudah termasuk transport).
+
+🛵 Area 'Ujung' (Bogor Kota/Kab, Cikarang, Karawang, Balaraja): Ada tambahan Biaya Operasional (Transport + Waktu) mulai dari Rp 50rb - 100rb tergantung jarak di Google Maps.
+
+Kenapa ada biaya tambahan? Karena kami memperhitungkan Resiko Garansi. Kalau (amit-amit) ada masalah lagi, kami harus siap datang lagi ke lokasi yang jauh itu tanpa minta bayaran servis ulang. Jadi biaya di awal itu semacam 'asuransi' jarak tempuh teknisi.
+
+Setuju? Gas langsung DM!
+                </div>
+            </div>
+            <div class="space-y-4 w-full">
+                <button onclick="setView('bandung')" class="w-full p-4 rounded-xl font-bold shadow-lg transition-transform hover:scale-[1.02] active:scale-95 bg-white text-red-700">
+                    Lihat Informasi Layanan Bandung 👉
+                </button>
+            </div>
+            <!-- Common Footer Components for sub-pages -->
+            <div id="subPageFooter-jakarta"></div>
+        </div>
+
+        <!-- Bandung Info View -->
+        <div id="view-bandung" class="view-section w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="w-full p-6 rounded-2xl mb-6 shadow-xl backdrop-blur-sm bg-white/10 text-white border border-white/20">
+                <h2 class="text-xl font-bold mb-4 text-center text-yellow-300 drop-shadow-md">
+                    SAMPURASUN WARGI BANDUNG! 👋 Akhirnya Kami Hadir di Surapati!
+                </h2>
+                <div class="text-sm leading-relaxed whitespace-pre-wrap font-medium space-y-4">
+                    Biar akang/teteh servisnya nyaman dan kami kerjanya maksimal, ini info penting soal jangkauan servis kami ya (Start dari Workshop: Jl. Surapati):
+
+✅ AREA 'KOTA' (Zona Aman): Tarif Standar: Rp 250.000 (Sudah free transport). Cakupannya: Dago, Dipatiukur, Antapani, Arcamanik, Buah Batu, Kiaracondong, Pasteur, sampai Alun-Alun. Pokoknya selama masih masuk Kodya Bandung, sikat!
+
+🛵 AREA 'CORET' / KABUPATEN (Zona Extra): (Contoh: Cimahi, Ujung Berung, Cibiru, Dayeuhkolot, Lembang Atas) Mohon maaf ada Tambahan Transport mulai Rp 25rb - 50rb ya.
+
+Kenapa harus nambah? Jujur-jujuran aja nih Kang/Teh, karena tim teknisi kami di Bandung slotnya masih terbatas (Limited Slot). Jarak yang jauh memakan waktu perjalanan lumayan, plus kami harus pastikan Garansi tetap aman. Kalau nanti (amit-amit) perlu balik lagi, kami siap meluncur tanpa pusing mikirin bensin lagi.
+
+Jadi biaya extra ini buat 'mengamankan' kenyamanan akang/teteh juga sampai tuntas! 👌
+
+Setuju? Mangga di-WA adminnya buat jadwalin!
+                </div>
+            </div>
+            <div class="space-y-4 w-full">
+                <button onclick="setView('jakarta')" class="w-full p-4 rounded-xl font-bold shadow-lg transition-transform hover:scale-[1.02] active:scale-95 bg-white text-red-700">
+                    👈 Lihat Informasi Layanan Jabodetabek
+                </button>
+            </div>
+            <div id="subPageFooter-bandung"></div>
+        </div>
+
+        <!-- Useful Content View -->
+        <div id="view-useful-content" class="view-section w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="w-full p-6 rounded-2xl mb-6 shadow-xl backdrop-blur-sm bg-white/10 text-white border border-white/20">
+                <div class="flex flex-col gap-4">
+                    <div class="text-center mb-4">
+                        <i data-lucide="book-open" class="w-12 h-12 mx-auto mb-2 text-yellow-300"></i>
+                        <p class="text-sm opacity-90">Tips perawatan dan penggunaan alat fitness yang baik dan benar.</p>
+                    </div>
+                    
+                    <!-- Content List -->
+                    <div id="contentList" class="flex flex-col gap-4">
+                        <!-- Will be populated by JS -->
+                    </div>
+                    
+                    <p class="text-center text-xs opacity-60 mt-4">Konten lainnya akan segera hadir.</p>
+                </div>
+            </div>
+            <div id="subPageFooter-useful"></div>
+        </div>
+
+        <!-- Recommendations View -->
+        <div id="view-recommendations" class="view-section w-full animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="w-full p-6 rounded-2xl mb-6 shadow-xl backdrop-blur-sm bg-white/10 text-white border border-white/20">
+                <div class="flex flex-col items-center justify-center py-8 text-center">
+                    <h2 class="text-xl font-bold mb-2 text-yellow-300 drop-shadow-md">Rekomendasi Produk</h2>
+                    <p class="text-lg font-medium">Coming Soon!</p>
+                    <p class="text-sm opacity-80 mt-2 max-w-xs">Halaman ini akan berisi rekomendasi produk alat fitness terbaik untuk Anda.</p>
+                </div>
+            </div>
+            <div id="subPageFooter-recom"></div>
+        </div>
+
+    </div>
+
+    <!-- Reusable Template for Sub Page Footers -->
+    <template id="footerTemplate">
+        <div class="mt-4 w-full">
+            <a href="https://wa.me/6282260879593?text=Halo%20Min,%20saya%20tertarik%20dengan%20layanan%20servisnya." target="_blank" class="block w-full p-4 rounded-xl font-bold shadow-lg transition-transform hover:scale-[1.02] active:scale-95 bg-green-500 text-white flex items-center justify-center gap-2">
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                Chat Admin WhatsApp
+            </a>
+        </div>
+        <div class="mt-12 w-full pt-8 border-t border-white/20 flex flex-col items-center">
+            <div class="flex items-center gap-6 mb-8">
+                <a href="https://youtube.com/@servisika?si=rqg4sDnvXCIcsdXN" target="_blank" class="text-white hover:text-yellow-300 hover:scale-110 transition-all">
+                    <i data-lucide="youtube" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.instagram.com/servisika/" target="_blank" class="text-white hover:text-yellow-300 hover:scale-110 transition-all">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+                <a href="https://www.tiktok.com/@rotasi_tehnik" target="_blank" class="text-white hover:text-yellow-300 hover:scale-110 transition-all">
+                    <img src="https://img.icons8.com/?size=100&id=QEblvzUroh89&format=png&color=FFFFFF" alt="TikTok" class="w-6 h-6 object-contain">
+                </a>
+                <a href="https://www.facebook.com/servisika" target="_blank" class="text-white hover:text-yellow-300 hover:scale-110 transition-all">
+                    <i data-lucide="facebook" class="w-6 h-6"></i>
+                </a>
+            </div>
+            <div id="branchAddressList" class="grid gap-6 w-full">
+                <!-- Address injected by JS -->
+            </div>
+        </div>
+    </template>
+
+    <script>
+        // Constants / Data
+        const BRANCH_ADDRESSES = [
+            {
+                name: "Cabang Jakarta",
+                address: "Jakarta Utara,RT.2/RW.9, Sunter Jaya, Kec. Tj. Priok, Jkt Utara, Daerah Khusus Ibukota Jakarta 14360",
+                mapUrl: "https://maps.app.goo.gl/iu9R16GdrVqtuxtz6"
+            },
+            {
+                name: "Cabang Bandung",
+                address: "Jl. Surapati No.41/144F, RT.07/RW.09, Sukaluyu, Kec. Cibeunying Kaler, Kota Bandung, Jawa Barat 40123",
+                mapUrl: "https://maps.app.goo.gl/jzYW1g6PvZPG8jui9"
+            }
+        ];
+
+        const USEFUL_CONTENTS = [
+            {
+                title: "Cara mengatasi treadmill mati total",
+                description: "Tips ringan agar treadmill awet.",
+                url: "https://youtu.be/hCfDyroCsC4?si=U27LXiZ691y5ZPvS"
+            },
+            {
+                title: "Hati-hati cara pelumasan yang keliru!!",
+                description: "Tips ringan agar treadmill awet.",
+                url: "https://youtube.com/shorts/Lbjon01avy4?si=cJBZlxChfQu_w3HZ"
+            },
+            {
+                title: "Suara cardio bike Bunyi berisik",
+                description: "Tips ringan agar treadmill awet.",
+                url: "https://youtube.com/shorts/Ny_q2kdtLok?si=OhgZqjkyFjAq8y1s"
+            }
+        ];
+
+        // State Management
+        function setView(viewName) {
+            // Hide all sections
+            document.querySelectorAll('.view-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            const targetSection = document.getElementById('view-' + viewName);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Update Header & UI Elements
+            const backBtn = document.getElementById('backBtn');
+            const pageTitle = document.getElementById('pageTitle');
+            const homeProfile = document.getElementById('homeProfileInfo');
+
+            if (viewName === 'home') {
+                backBtn.classList.add('hidden');
+                pageTitle.innerText = "Servisika";
+                homeProfile.classList.remove('hidden');
+            } else {
+                backBtn.classList.remove('hidden');
+                homeProfile.classList.add('hidden');
+                
+                if (viewName === 'jakarta' || viewName === 'bandung') {
+                    pageTitle.innerText = "Informasi dan Layanan Kami";
+                } else if (viewName === 'recommendations') {
+                    pageTitle.innerText = "Rekomendasi Produk";
+                } else if (viewName === 'useful-content') {
+                    pageTitle.innerText = "Konten Bermanfaat";
+                }
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        // Initialize Content
+        function initApp() {
+            // Set Year
+            document.getElementById('year').innerText = new Date().getFullYear();
+
+            // Render Useful Content List
+            const listContainer = document.getElementById('contentList');
+            USEFUL_CONTENTS.forEach(item => {
+                const a = document.createElement('a');
+                a.href = item.url;
+                a.target = "_blank";
+                a.className = "p-4 rounded-xl border border-white/20 hover:bg-white/10 text-white flex items-center gap-3 transition-all cursor-pointer hover:shadow-md";
+                a.innerHTML = `
+                    <i data-lucide="play-circle" class="w-8 h-8 opacity-80 shrink-0"></i>
+                    <div>
+                        <h3 class="font-bold text-sm text-left">${item.title}</h3>
+                        <p class="text-xs opacity-70 text-left">${item.description}</p>
+                    </div>
+                `;
+                listContainer.appendChild(a);
+            });
+
+            // Inject Footer to all sub-pages
+            const footerIds = ['subPageFooter-jakarta', 'subPageFooter-bandung', 'subPageFooter-useful', 'subPageFooter-recom'];
+            const template = document.getElementById('footerTemplate');
+
+            footerIds.forEach(id => {
+                const target = document.getElementById(id);
+                if (target) {
+                    const clone = template.content.cloneNode(true);
+                    
+                    // Populate branch addresses in the footer clone if needed
+                    const addressContainer = clone.querySelector('#branchAddressList');
+                    // Only show addresses if NOT useful-content or recommendations (to match React logic)
+                    if (id === 'subPageFooter-jakarta' || id === 'subPageFooter-bandung') {
+                         BRANCH_ADDRESSES.forEach(branch => {
+                            const bLink = document.createElement('a');
+                            bLink.href = branch.mapUrl;
+                            bLink.target = "_blank";
+                            bLink.className = "flex flex-col gap-1 p-4 rounded-xl border border-white/20 text-white transition-all hover:bg-white/10";
+                            bLink.innerHTML = `
+                                <div class="flex items-center gap-2 font-bold text-yellow-300">
+                                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    ${branch.name}
+                                </div>
+                                <p class="text-xs opacity-90 leading-relaxed">${branch.address}</p>
+                            `;
+                            addressContainer.appendChild(bLink);
+                        });
+                    }
+
+                    target.appendChild(clone);
+                }
+            });
+
+            // Initialize Icons
+            lucide.createIcons();
+        }
+
+        window.onload = initApp;
+    </script>
+</body>
+</html>
